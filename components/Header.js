@@ -1,6 +1,22 @@
 import Nav from './Nav';
 import Link from 'next/link';
 import styled from 'styled-components';
+import Router from 'next/router';
+import NProgress from 'nprogress';
+
+const handleRouteChangeStart = () => {
+    NProgress.start();
+}
+const handleRouteChangeDone = () => {
+    NProgress.done();
+}
+const handleRouteChangeError = () => {
+    NProgress.done();
+}
+
+Router.events.on('routeChangeStart', handleRouteChangeStart);
+Router.events.on('routeChangeComplete', handleRouteChangeDone);
+Router.events.on('routeChangeError', handleRouteChangeError);
 
 const Logo = styled.h1`
     font-size: 4rem;
@@ -36,7 +52,7 @@ const StyledHeader = styled.header`
     .sub-bar {
         display: grid;
         grid-template-columns: 1fr auto;
-        border-bottom: 1px solid ${props => props.theme.lightGrey}
+        border-bottom: 1px solid ${props => props.theme.lightGrey};
     }
 `;
 

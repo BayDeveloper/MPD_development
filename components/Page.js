@@ -18,10 +18,10 @@ const StyledPage = styled.div`
 `;
 
 const Inner = styled.div`
-    max-width: ${props => props.theme.maxWidth};
+    max-width: ${theme.maxWidth};
     margin: 0 auto;
     padding: 2rem;
-    /*background: ${props => props.theme.red};*/
+    background: ${theme.red};
 `;
 
 const GlobalStyle = createGlobalStyle`
@@ -56,9 +56,9 @@ class Page extends Component {
         return (
             <ThemeProvider theme={theme}>
                 <StyledPage>
-                    <GlobalStyle/>
+                <GlobalStyle/>
                     <IndexPage/>
-                        <Inner>{this.props.children}</Inner>
+                    <Inner>{this.props.children}</Inner>
                 </StyledPage>
             </ThemeProvider>
         );
